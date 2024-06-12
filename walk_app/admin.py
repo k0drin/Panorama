@@ -3,7 +3,7 @@ from .models import Panorama, Marker, Subscriber
 
 class MarkerInline(admin.TabularInline):
     model = Marker
-    fk_name = 'panorama'  # ForeignKey 
+    fk_name = 'panorama'   
     extra = 1
 
 @admin.register(Panorama)

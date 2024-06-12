@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Panorama, Marker
+from .models import Panorama, Marker, Subscriber
 
 class MarkerInline(admin.TabularInline):
     model = Marker
@@ -14,3 +14,7 @@ class PanoramaAdmin(admin.ModelAdmin):
 class MarkerAdmin(admin.ModelAdmin):
     list_display = ('panorama', 'x_coordinate', 'y_coordinate', 'tooltip_text', 'linked_panorama')
     list_filter = ('panorama', 'linked_panorama')
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'ip_address')

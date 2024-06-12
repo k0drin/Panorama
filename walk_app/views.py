@@ -1,6 +1,23 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Panorama, Marker
 import json
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from .forms import SubscriptionForm
+from .models import Subscriber
+
+@csrf_exempt
+@require_POST
+def subscribe(request):
+    form = SubscriptionForm(request.POST)
+    if form.is_valid():
+        subscriber = form.save(commit=False)
+        subscriber.ip_address = request.META.get('REMOTE_ADDR')
+        subscriber.save()
+        return JsonResponse({'message': 'Вы успешно подписались на рассылку!'}, status=200)
+    else:
+        return JsonResponse({'errors': form.errors}, status=400)
 
 def panorama_detail(request, pk):
     panorama = get_object_or_404(Panorama, pk=pk)

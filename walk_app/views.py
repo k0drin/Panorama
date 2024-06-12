@@ -18,4 +18,3 @@ def panorama_detail(request, pk):
         'panorama': panorama,
         'markers_json': markers_json
     })
-

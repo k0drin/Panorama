@@ -68,7 +68,7 @@
  ```http
  GET http://127.0.0.1:8000/walk_app/subscription/
  ````
-- Оstart virtual tour":
+- Start virtual tour":
  ```http
  GET http://127.0.0.1:8000/walk_app/panorama/1/
  ```

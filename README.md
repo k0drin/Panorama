@@ -1,4 +1,4 @@
-![image](https://github.com/k0drin/Panorama/assets/124861436/e0de1cb9-3fa6-4464-8733-75dae93f12eb)# Django 360
+# Django 360
 
 ## Installation and launch
 
@@ -34,7 +34,6 @@
 8. Create a panorama model in the admin panel:
    - **GET** `http://127.0.0.1:8000/admin/` — Django admin panel.
 
-   Go to panoramas:
    ![image](https://github.com/k0drin/Panorama/assets/124861436/4ade76ce-b643-4adb-ac77-308f9b9a94f2)
 
    Press "Add panorama":

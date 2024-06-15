@@ -42,8 +42,9 @@
    ##### Warning⚠️
    Make sure the marker coordinates are within the valid range:
    
-   yaw should be in the range -π to π (-3.14 to 3.14).
-   pitch should be in the range from -π/2 to π/2 (from -1.57 to 1.57)
+   **YAW** should be in the range -π to π (-3.14 to 3.14).
+   
+   **PITCH** should be in the range from -π/2 to π/2 (from -1.57 to 1.57)
    
    Then fill out all the fields and click "Save":
    ![image](https://github.com/k0drin/Panorama/assets/124861436/9dfedb14-5c28-40ab-9daa-9b316a5fc850)

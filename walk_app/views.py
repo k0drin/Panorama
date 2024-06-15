@@ -7,6 +7,11 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import SubscriptionForm
 
 
+def panorama_detail(request, pk):
+    panorama = get_object_or_404(Panorama, pk=pk)
+    markers = panorama.markers.all()
+    return render(request, 'walk_app/panorama.html', {'panorama': panorama, 'markers': markers})
+
 @csrf_exempt
 def subscribe(request):
     if request.method == "POST":
@@ -25,27 +30,27 @@ def subscribe(request):
         return render(request, "walk_app/subscription.html", {"form": form})
 
 
-def panorama_detail(request, pk):
-    panorama = get_object_or_404(Panorama, pk=pk)
-    markers = Marker.objects.filter(panorama=panorama)
-    markers_json = json.dumps(
-        [
-            {
-                "id": marker.id,
-                "x_coordinate": marker.x_coordinate,
-                "y_coordinate": marker.y_coordinate,
-                "tooltip_text": marker.tooltip_text,
-                "linked_panorama_url": (
-                    marker.linked_panorama.get_absolute_url()
-                    if marker.linked_panorama
-                    else None
-                ),
-            }
-            for marker in markers
-        ]
-    )
-    return render(
-        request,
-        "walk_app/base.html",
-        {"panorama": panorama, "markers_json": markers_json},
-    )
+# def panorama_detail(request, pk):
+#     panorama = get_object_or_404(Panorama, pk=pk)
+#     markers = Marker.objects.filter(panorama=panorama)
+#     markers_json = json.dumps(
+#         [
+#             {
+#                 "id": marker.id,
+#                 "x_coordinate": marker.x_coordinate,
+#                 "y_coordinate": marker.y_coordinate,
+#                 "tooltip_text": marker.tooltip_text,
+#                 "linked_panorama_url": (
+#                     marker.linked_panorama.get_absolute_url()
+#                     if marker.linked_panorama
+#                     else None
+#                 ),
+#             }
+#             for marker in markers
+#         ]
+#     )
+#     return render(
+#         request,
+#         "walk_app/base.html",
+#         {"panorama": panorama, "markers_json": markers_json},
+#     )
